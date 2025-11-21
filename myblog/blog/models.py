@@ -31,7 +31,9 @@ class Post(models.Model):
                              self.publish.day,
                              self.slug])
 
-
+    def __str__(self):
+        return self.title
+    
     class Meta:
         ordering = ['-publish']
         indexes = [
@@ -54,5 +56,4 @@ class Comment(models.Model):
     def __str__(self):
         return f'Comment by {self.name} on {self.post}'
 
-    def __str__(self):
-        return self.title
+

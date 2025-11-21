@@ -1,4 +1,3 @@
-from .models import Post
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment
 from .forms import CommentForm
@@ -68,7 +67,7 @@ def post_detail(request, year, month, day, post):
     comments = post.comments.filter(active=True)
 
     form = CommentForm()
-    
+
     return render(request, 'blog/post/detail.html',
                   {'post': post,
                    'comments': comments,

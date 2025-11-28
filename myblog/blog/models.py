@@ -13,7 +13,7 @@ class Post(models.Model):
     class Status(models.TextChoices):
         DRAFT = 'DF', 'Draft'
         PUBLISHED = 'PB', 'Published'
-
+    tags = TaggableManager()
     objects = models.Manager()
     published = PublishedManager()
     title = models.CharField(max_length=250)
@@ -40,7 +40,7 @@ class Post(models.Model):
         indexes = [
             models.Index(fields=['-publish']),
         ]
-        tags = TaggableManager()
+        
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
